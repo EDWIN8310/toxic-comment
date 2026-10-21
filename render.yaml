@@ -3,6 +3,6 @@ services:
     name: toxic-comment-model-api
     runtime: python
     plan: free
-    buildCommand: pip install -r api-requirements.txt
+    buildCommand: bash render-build.sh
     startCommand: uvicorn api:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
