@@ -6,3 +6,6 @@ services:
     buildCommand: bash render-build.sh
     startCommand: uvicorn api:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
+    envVars:
+      - key: MODEL_ARCHIVE_URL
+        value: https://github.com/EDWIN8310/toxic-comment/releases/download/model-v1/toxic_comment_model_final.zip
