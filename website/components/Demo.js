@@ -12,31 +12,8 @@ const CATEGORY_META = [
   { key: 'identity_hate', name: 'Identity Hate', emoji: '🎯' },
 ];
 
-const EXAMPLE_COMMENTS = [
-  {
-    label: '✨ Positive / Safe',
-    text: 'Thank you so much for this amazing article! It really helped me understand transformers and fine-tuning.',
-  },
-  {
-    label: '🤔 Constructive Disagreement',
-    text: 'I respectfully disagree with your conclusion on this topic, though your methodology seems sound.',
-  },
-  {
-    label: '😤 Insult & Mild Toxic',
-    text: 'You are such an idiot, this code is completely stupid, worthless, and badly written.',
-  },
-  {
-    label: '🔪 Direct Threat',
-    text: 'Shut up or I will find you and kill you! You are going to pay for this.',
-  },
-  {
-    label: '🎯 Identity Hate',
-    text: 'People like that group are total garbage and should never be allowed anywhere near here.',
-  },
-];
-
 export default function Demo() {
-  const [inputText, setInputText] = useState(EXAMPLE_COMMENTS[2].text);
+  const [inputText, setInputText] = useState('');
   const [loading, setLoading] = useState(false);
   const [predictions, setPredictions] = useState(null);
   const [thresholds, setThresholds] = useState({});
@@ -68,11 +45,6 @@ export default function Demo() {
 
   const handleAnalyze = () => analyzeText(inputText);
 
-  const handleSelectExample = (exampleText) => {
-    setInputText(exampleText);
-    analyzeText(exampleText);
-  };
-
   // Check if any category exceeds 0.5
   const isToxicDetected = predictions
     ? Object.entries(predictions).some(([key, val]) => {
@@ -94,44 +66,23 @@ export default function Demo() {
   };
 
   return (
-    <section id="demo" className={`section ${styles.demoSection}`}>
+    <section id="predict" className={`section ${styles.demoSection}`}>
       <div className="container">
         {/* Header */}
         <div className="sectionHeader">
           <div className="sectionBadge">
             <span className="sectionBadgeDot" />
-            <span>Interactive Playground</span>
+            <span>Live Model</span>
           </div>
           <h2 className="sectionTitle">
-            Try It <span className="gradientText">Live</span>
+            Analyze a <span className="gradientText">Comment</span>
           </h2>
           <p className="sectionSubtitle">
-            Experience real-time multi-label classification. Enter custom text or select
-            a preset example to see how the model categorizes subtle linguistic toxicity.
+            Enter a comment to run it through the deployed fine-tuned DistilBERT model.
           </p>
         </div>
 
-        {/* Demo Main Console */}
         <div className={styles.demoCard}>
-          {/* Preset Buttons */}
-          <div className={styles.presetsBar}>
-            <span className={styles.presetsLabel}>Try an example:</span>
-            <div className={styles.presetsList}>
-              {EXAMPLE_COMMENTS.map((example, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  className={`${styles.presetBtn} ${
-                    inputText === example.text ? styles.presetBtnActive : ''
-                  }`}
-                  onClick={() => handleSelectExample(example.text)}
-                >
-                  {example.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
           <div className={styles.consoleGrid}>
             {/* Input Panel */}
             <div className={styles.inputPanel}>

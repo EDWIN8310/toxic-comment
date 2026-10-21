@@ -18,7 +18,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Features', href: '#features' },
-    { name: 'Demo', href: '#demo' },
+    { name: 'Analyze', href: '#predict' },
     { name: 'Categories', href: '#labels' },
     { name: 'Architecture', href: '#architecture' },
     { name: 'Metrics', href: '#metrics' },
@@ -76,11 +76,11 @@ export default function Navbar() {
             </svg>
           </a>
           <a
-            href="#demo"
+            href="#predict"
             className={styles.ctaButton}
-            onClick={(e) => handleLinkClick(e, '#demo')}
+            onClick={(e) => handleLinkClick(e, '#predict')}
           >
-            <span>Try Live Demo</span>
+            <span>Analyze Comment</span>
             <span className={styles.ctaArrow}>→</span>
           </a>
 
@@ -114,11 +114,11 @@ export default function Navbar() {
           ))}
           <li className={styles.mobileDrawerAction}>
             <a
-              href="#demo"
+              href="#predict"
               className={styles.mobileCtaBtn}
-              onClick={(e) => handleLinkClick(e, '#demo')}
+              onClick={(e) => handleLinkClick(e, '#predict')}
             >
-              Try Live Demo →
+              Analyze Comment →
             </a>
           </li>
         </ul>

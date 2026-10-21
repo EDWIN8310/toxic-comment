@@ -11,18 +11,18 @@ export default function Footer() {
   ];
 
   const quickLinks = [
-    { label: 'Live Toxicity Demo', href: '#demo' },
+    { label: 'Comment Analyzer', href: '#predict' },
     { label: 'Architecture Overview', href: '#architecture' },
     { label: 'Evaluation Metrics', href: '#metrics' },
     { label: 'Toxicity Taxonomy', href: '#labels' },
   ];
 
   const resourceLinks = [
-    { label: 'GitHub Repository', href: 'https://github.com', external: true },
+    { label: 'GitHub Repository', href: 'https://github.com/EDWIN8310/toxic-comment', external: true },
     { label: 'Google Colab Training Notebook', href: 'https://colab.research.google.com', external: true },
     { label: 'Kaggle Toxic Comment Dataset', href: 'https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge', external: true },
     { label: 'Hugging Face Model Card', href: 'https://huggingface.co', external: true },
-    { label: 'Gradio Web App Demo', href: '#demo', external: false },
+    { label: 'Live Comment Analyzer', href: '#predict', external: false },
   ];
 
   return (
