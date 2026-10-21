@@ -7,3 +7,4 @@ website/node_modules/
 website/.next/
 website/.vercel/
 toxic_comment_model_final/model.safetensors
+toxic_comment_model_final.zip
