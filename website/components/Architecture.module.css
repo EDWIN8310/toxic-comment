@@ -1,0 +1,238 @@
+.archSection {
+  background: radial-gradient(circle at 50% 20%, rgba(249, 115, 22, 0.05) 0%, transparent 60%);
+  position: relative;
+}
+
+.diagramWrapper {
+  background: rgba(18, 18, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-xl);
+  padding: 32px 28px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  margin-bottom: 50px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.diagramTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.diagramBadge {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fdba74;
+}
+
+.diagramSubtext {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.pipelineFlow {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.stepBlock {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 170px;
+}
+
+.stepCard {
+  background: rgba(12, 12, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.stepCard:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2);
+}
+
+.stepTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.stepNumber {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #fdba74;
+  letter-spacing: 0.05em;
+  background: rgba(249, 115, 22, 0.12);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.stepIcon {
+  font-size: 1.3rem;
+}
+
+.stepTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.stepSubtitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-orange);
+  margin-bottom: 10px;
+}
+
+.stepDetail {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-top: auto;
+}
+
+.arrowConnector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(249, 115, 22, 0.6);
+  font-size: 1.2rem;
+  padding: 0 4px;
+}
+
+/* Training Details */
+.trainingSection {
+  margin-top: 20px;
+}
+
+.trainingHeader {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.trainingTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.trainingSubtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.trainingGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.trainCard {
+  padding: 26px 24px;
+  border-radius: var(--radius-lg);
+  background: rgba(18, 18, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--transition-normal);
+}
+
+.trainCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.5), 0 0 25px -10px rgba(239, 68, 68, 0.25);
+}
+
+.trainCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.trainIconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  font-size: 1.2rem;
+}
+
+.trainBadge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.trainLabel {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.trainValue {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.trainDesc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .pipelineFlow {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+  .stepBlock {
+    flex-direction: column;
+    min-width: 100%;
+  }
+  .arrowConnector {
+    transform: rotate(90deg);
+    padding: 10px 0;
+  }
+  .trainingGrid {
+    grid-template-columns: 1fr;
+  }
+}

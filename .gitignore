@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+website/node_modules/
+website/.next/
+website/.vercel/
+toxic_comment_model_final/model.safetensors
