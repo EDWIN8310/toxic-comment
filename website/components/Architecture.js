@@ -71,9 +71,9 @@ export default function Architecture() {
     {
       icon: '🚀',
       label: 'Precision & Hardware',
-      value: 'FP16 Mixed Precision',
-      desc: 'Accelerated CUDA Tensor Cores achieving 2.5x speedup and 50% memory reduction with zero loss in precision.',
-      badge: 'Optimized',
+      value: 'Hosted model service',
+      desc: 'The fine-tuned model is served through a FastAPI endpoint that returns a score and calibrated flag for each category.',
+      badge: 'Deployed',
     },
   ];
 
@@ -99,7 +99,7 @@ export default function Architecture() {
         <div className={styles.diagramWrapper}>
           <div className={styles.diagramTitleRow}>
             <span className={styles.diagramBadge}>End-to-End Inference Flow</span>
-            <span className={styles.diagramSubtext}>Feed-forward pipeline latency ~12ms</span>
+            <span className={styles.diagramSubtext}>From text input to category-level scores</span>
           </div>
 
           <div className={styles.pipelineFlow}>

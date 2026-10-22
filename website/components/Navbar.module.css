@@ -100,6 +100,9 @@
   width: 100%;
 }
 
+.navLinkActive { color: #ffffff; }
+.navLinkActive::after { width: 100%; }
+
 .navActions {
   display: flex;
   align-items: center;
@@ -234,6 +237,8 @@
   color: #ffffff;
 }
 
+.mobileNavLinkActive { color: #fdba74; }
+
 .mobileDrawerAction {
   padding-top: 12px;
 }
@@ -262,4 +267,15 @@
   .ctaButton {
     display: none;
   }
+  .header { padding: 12px 0; }
+  .scrolled { padding: 10px 0; }
+  .githubBtn, .hamburger { width: 44px; height: 44px; }
+  .mobileDrawer { padding: 16px max(16px, env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+  .mobileNavLink { min-height: 44px; display: flex; align-items: center; }
+}
+
+@media (max-width: 380px) {
+  .logo { gap: 6px; font-size: 1.15rem; }
+  .logoBadge { display: none; }
+  .navActions { gap: 8px; }
 }

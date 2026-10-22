@@ -31,10 +31,10 @@ export default function Features() {
     },
     {
       icon: '⚡',
-      title: 'Real-time Inference',
-      subtitle: 'Sub-15ms Latency',
+      title: 'Live Inference',
+      subtitle: 'Deployed REST API',
       description:
-        'Engineered for high-throughput moderation workflows. Evaluates full sentences and paragraphs in milliseconds with FP16 tensor core acceleration.',
+        'Submit a comment directly from this site and receive category-level scores from the deployed model service. The first request can take longer while a free service wakes up.',
       tag: 'Low Latency',
       accentColor: '#eab308',
     },

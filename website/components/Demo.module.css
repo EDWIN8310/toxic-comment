@@ -3,7 +3,7 @@
 }
 
 .demoCard {
-  background: rgba(18, 18, 30, 0.75);
+  background: rgba(17, 24, 43, 0.82);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-elevated), 0 0 50px -15px rgba(239, 68, 68, 0.2);
@@ -123,6 +123,13 @@
   box-shadow: 0 0 20px -5px rgba(249, 115, 22, 0.3);
 }
 
+.inputHelp {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
 .clearBtn {
   position: absolute;
   top: 14px;
@@ -222,6 +229,23 @@
   display: flex;
   flex-direction: column;
 }
+
+.emptyState {
+  flex: 1;
+  min-height: 225px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 24px;
+  color: var(--text-secondary);
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+}
+
+.emptyState p { max-width: 235px; line-height: 1.5; }
+.emptyIcon { color: #fdba74; font-size: 2.2rem; line-height: 1; }
+.errorMessage { margin-top: 18px; padding: 12px 14px; color: #fecaca; background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-md); font-size: 0.9rem; }
 
 .resultTitleWrapper {
   display: flex;
@@ -354,6 +378,13 @@
 }
 
 @media (max-width: 580px) {
+  .demoCard { padding: 16px; border-radius: var(--radius-lg); }
+  .textarea { min-height: 150px; font-size: 16px; }
+  .resultsPanel { padding: 16px; }
+  .resultTitleWrapper { align-items: flex-start; gap: 8px; flex-direction: column; }
+  .barScoreGroup { gap: 6px; }
+  .riskTag { display: none; }
+  .emptyState { min-height: 180px; }
   .presetsBar {
     flex-direction: column;
     align-items: flex-start;

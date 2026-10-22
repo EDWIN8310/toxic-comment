@@ -45,6 +45,13 @@ export default function Demo() {
 
   const handleAnalyze = () => analyzeText(inputText);
 
+  const handleKeyDown = (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
+      event.preventDefault();
+      handleAnalyze();
+    }
+  };
+
   // Check if any category exceeds 0.5
   const isToxicDetected = predictions
     ? Object.entries(predictions).some(([key, val]) => {
@@ -78,16 +85,15 @@ export default function Demo() {
             Analyze a <span className="gradientText">Comment</span>
           </h2>
           <p className="sectionSubtitle">
-            Enter a comment to run it through the deployed fine-tuned DistilBERT model.
+            Paste a comment below. The result shows the model’s confidence for every category.
           </p>
         </div>
 
         <div className={styles.demoCard}>
           <div className={styles.consoleGrid}>
-            {/* Input Panel */}
             <div className={styles.inputPanel}>
               <div className={styles.panelHeader}>
-                <span className={styles.panelTitle}>Input Text</span>
+                <label className={styles.panelTitle} htmlFor="comment-input">Comment to analyze</label>
                 <span className={styles.charCount}>
                   {inputText.length} characters
                 </span>
@@ -98,8 +104,12 @@ export default function Demo() {
                   className={styles.textarea}
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
+                  onKeyDown={handleKeyDown}
                   placeholder="Type or paste any comment here to analyze for toxicity..."
                   rows={6}
+                  id="comment-input"
+                  maxLength={5000}
+                  aria-describedby="input-help"
                 />
                 {inputText && (
                   <button
@@ -107,6 +117,7 @@ export default function Demo() {
                     className={styles.clearBtn}
                     onClick={() => setInputText('')}
                     title="Clear text"
+                    aria-label="Clear comment"
                   >
                     ✕
                   </button>
@@ -123,12 +134,12 @@ export default function Demo() {
                   {loading ? (
                     <>
                       <span className={styles.spinner} />
-                      <span>Classifying tokens...</span>
+                      <span>Analyzing comment…</span>
                     </>
                   ) : (
                     <>
                       <span>⚡ Analyze Comment</span>
-                      <span className={styles.btnShortcut}>Return ↵</span>
+                      <span className={styles.btnShortcut}>Ctrl ↵</span>
                     </>
                   )}
                 </button>
@@ -140,9 +151,9 @@ export default function Demo() {
                   </div>
                 )}
               </div>
+              <p id="input-help" className={styles.inputHelp}>Your text is sent to the model API for analysis. Do not enter sensitive personal information.</p>
             </div>
 
-            {/* Results Panel */}
             <div className={styles.resultsPanel}>
               <div className={styles.panelHeader}>
                 <div className={styles.resultTitleWrapper}>
@@ -159,8 +170,7 @@ export default function Demo() {
                 </div>
               </div>
 
-              {/* Progress Bars */}
-              <div className={styles.barsContainer}>
+              {predictions ? <div className={styles.barsContainer} aria-live="polite">
                 {CATEGORY_META.map((cat) => {
                   const prob = predictions ? predictions[cat.key] : 0;
                   const percentage = Math.min(100, Math.max(0, Math.round(prob * 100)));
@@ -204,16 +214,20 @@ export default function Demo() {
                     </div>
                   );
                 })}
-              </div>
+              </div> : (
+                <div className={styles.emptyState}>
+                  <span className={styles.emptyIcon} aria-hidden="true">⌁</span>
+                  <p>Results will appear here after you analyze a comment.</p>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Footer note */}
-          {error && <p role="alert">{error}</p>}
+          {error && <p className={styles.errorMessage} role="alert">{error}</p>}
           <div className={styles.demoFooter}>
             <span className={styles.infoIcon}>ℹ️</span>
             <span>
-              ⚡ Predictions come from the fine-tuned DistilBERT model. First request may take longer while the free service wakes up.
+              Predictions come from the deployed fine-tuned DistilBERT model. The first request may take longer while the service wakes up.
             </span>
           </div>
         </div>

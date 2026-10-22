@@ -6,6 +6,7 @@ import styles from './Navbar.module.css';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,20 +14,28 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', closeOnEscape);
+    };
   }, []);
 
   const navLinks = [
-    { name: 'Features', href: '#features' },
+    { name: 'Capabilities', href: '#features' },
     { name: 'Analyze', href: '#predict' },
     { name: 'Categories', href: '#labels' },
-    { name: 'Architecture', href: '#architecture' },
-    { name: 'Metrics', href: '#metrics' },
+    { name: 'How it works', href: '#architecture' },
+    { name: 'Results', href: '#metrics' },
   ];
 
   const handleLinkClick = (e, href) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+    setActiveLink(href.startsWith('#') ? href : '');
     const targetElement = document.querySelector(href);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
@@ -36,7 +45,7 @@ export default function Navbar() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.navContainer}`}>
-        <a href="#" className={styles.logo} onClick={(e) => handleLinkClick(e, 'body')}>
+        <a href="#top" className={styles.logo} onClick={(e) => handleLinkClick(e, 'body')} aria-label="ToxiGuard AI home">
           <span className={styles.logoIcon}>🛡️</span>
           <span className={styles.logoText}>
             Toxi<span className={styles.logoHighlight}>Guard</span>
@@ -51,7 +60,7 @@ export default function Navbar() {
               <li key={link.name}>
                 <a
                   href={link.href}
-                  className={styles.navLink}
+                  className={`${styles.navLink} ${activeLink === link.href ? styles.navLinkActive : ''}`}
                   onClick={(e) => handleLinkClick(e, link.href)}
                 >
                   {link.name}
@@ -64,7 +73,7 @@ export default function Navbar() {
         {/* Action Button */}
         <div className={styles.navActions}>
           <a
-            href="https://github.com"
+            href="https://github.com/EDWIN8310/toxic-comment"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.githubBtn}
@@ -90,6 +99,7 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <span className={styles.bar}></span>
             <span className={styles.bar}></span>
@@ -99,13 +109,13 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Drawer Menu */}
-      <div className={`${styles.mobileDrawer} ${mobileMenuOpen ? styles.mobileDrawerOpen : ''}`}>
+      <div id="mobile-navigation" className={`${styles.mobileDrawer} ${mobileMenuOpen ? styles.mobileDrawerOpen : ''}`}>
         <ul className={styles.mobileNavList}>
           {navLinks.map((link) => (
             <li key={link.name}>
               <a
                 href={link.href}
-                className={styles.mobileNavLink}
+                className={`${styles.mobileNavLink} ${activeLink === link.href ? styles.mobileNavLinkActive : ''}`}
                 onClick={(e) => handleLinkClick(e, link.href)}
               >
                 {link.name}

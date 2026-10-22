@@ -1,19 +1,17 @@
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #11111b;
-  --bg-tertiary: #181826;
-  --bg-card: rgba(20, 20, 32, 0.65);
-  --bg-card-hover: rgba(28, 28, 44, 0.85);
-  --bg-card-active: rgba(36, 36, 56, 0.95);
+  --bg-primary: #0b1020;
+  --bg-secondary: #11182b;
+  --bg-tertiary: #18223a;
+  --bg-card: rgba(20, 29, 48, 0.82);
+  --bg-card-hover: rgba(28, 41, 67, 0.92);
+  --bg-card-active: rgba(36, 52, 83, 0.95);
   
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   
-  --accent-gradient: linear-gradient(135deg, #ef4444 0%, #f97316 48%, #ec4899 100%);
-  --accent-gradient-hover: linear-gradient(135deg, #f87171 0%, #fb923c 48%, #f472b6 100%);
-  --accent-gradient-subtle: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(249, 115, 22, 0.12) 50%, rgba(236, 72, 153, 0.12) 100%);
-  --accent-gradient-radial: radial-gradient(circle at top center, rgba(239, 68, 68, 0.18) 0%, rgba(249, 115, 22, 0.08) 35%, transparent 70%);
+  --accent-gradient: linear-gradient(135deg, #e95b45 0%, #ef8a4c 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #f1705c 0%, #f3a05d 100%);
 
   --accent-red: #ef4444;
   --accent-orange: #f97316;
@@ -69,11 +67,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 40%, rgba(249, 115, 22, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 20% 70%, rgba(236, 72, 153, 0.05) 0%, transparent 45%);
-  background-attachment: fixed;
+  background-image: radial-gradient(circle at 50% -20%, rgba(233, 91, 69, 0.14), transparent 38%);
 }
 
 /* Custom Scrollbar */
@@ -114,6 +108,11 @@ button {
   outline: none;
 }
 
+:focus-visible {
+  outline: 3px solid rgba(253, 186, 116, 0.9);
+  outline-offset: 3px;
+}
+
 /* Global Container */
 .container {
   width: 100%;
@@ -124,7 +123,7 @@ button {
 
 /* Section Common Styles */
 .section {
-  padding: 110px 0;
+  padding: 88px 0;
   position: relative;
   overflow: hidden;
 }
@@ -132,7 +131,7 @@ button {
 .sectionHeader {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 64px auto;
+  margin: 0 auto 44px auto;
 }
 
 .sectionBadge {
@@ -161,7 +160,7 @@ button {
 }
 
 .sectionTitle {
-  font-size: 2.75rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
@@ -198,6 +197,19 @@ button {
   border-color: var(--glass-border-hover);
   box-shadow: var(--shadow-elevated), 0 0 30px -10px var(--glow-orange);
   transform: translateY(-3px);
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  .section { padding: 64px 0; }
+  .sectionHeader { margin-bottom: 32px; text-align: left; }
+  .sectionTitle { margin-bottom: 12px; }
+  .sectionSubtitle { font-size: 1rem; }
+  .btnPrimary, .btnSecondary { min-height: 48px; padding: 12px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
 }
 
 /* Buttons */
